@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from . import serializers
 from . import models
-from rest_framework.generics import CreateAPIView,ListAPIView,UpdateAPIView,RetrieveAPIView,DestroyAPIView
+from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView,DestroyAPIView,RetrieveUpdateAPIView
 from django.http import Http404
 
 
@@ -22,7 +22,7 @@ class CategoryList(ListAPIView):
     serializer_class = serializers.CategorySerializer
     filter_fields = ('name','id')
 
-class CategoryUpdate(UpdateAPIView):
+class CategoryUpdate(RetrieveUpdateAPIView):
     queryset = models.Category.objects.all()
     lookup_field = 'pk'
     serializer_class = serializers.CategorySerializer
@@ -46,7 +46,7 @@ class BookView(RetrieveAPIView):
     lookup_field = 'pk'
     serializer_class = serializers.BookSerializer
 
-class BookUpdate(UpdateAPIView):
+class BookUpdate(RetrieveUpdateAPIView):
     queryset = models.Book.objects.all()
     lookup_field = 'pk'
     serializer_class = serializers.BookSerializer
