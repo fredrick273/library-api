@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from . import views
@@ -29,5 +29,7 @@ urlpatterns = [
     path("book/add/",views.BookCreate.as_view(),name='add-book'),
     path("book/update/<int:pk>/",views.BookUpdate.as_view(),name='update-book'),
     path("book/delete/<int:pk>/",views.BookDestroy.as_view(),name='delete-book'),
+
+    path('account/',include('account.urls'))
 
 ]
