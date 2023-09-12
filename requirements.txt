@@ -6,3 +6,4 @@ drf-yasg
 sqlparse
 pytz
 asgiref
+psycopg2
