@@ -1,0 +1,8 @@
+django
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
+drf-yasg
+sqlparse
+pytz
+asgiref
