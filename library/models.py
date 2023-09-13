@@ -16,3 +16,19 @@ class Book(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+class Person(models.Model):
+    name = models.CharField(max_length=200)
+    age = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+class LendingHistory(models.Model):
+    person = models.ForeignKey(Person,on_delete=models.CASCADE)
+    book = models.ForeignKey(Book,on_delete=models.CASCADE)
+    borrowing_time = models.DateField(auto_now_add=True)
+    returning_time = models.DateField(null=True)
+
+    def __str__(self):
+        return str(self.person) + ' - ' + str(self.book)

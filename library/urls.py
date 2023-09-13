@@ -21,8 +21,8 @@ urlpatterns = [
     path("category/add/",views.CategoryCreate.as_view(),name='add-category'),
     path("category/update/<int:pk>/",views.CategoryUpdate.as_view(),name='update-category'),
     path("category/delete/<int:pk>/",views.CategoryDestroy.as_view(),name='delete-category'),
-    path("category/books/<int:category_id>/",views.BookCategoryList.as_view(),name='category-books'),
 
+    path("category/<int:category_id>/books/",views.BookCategoryList.as_view(),name='category-books'),
 
     path("book/",views.BookList.as_view(),name='list-book'),
     path("book/<int:pk>/",views.BookView.as_view(),name='view-book'),
@@ -30,6 +30,24 @@ urlpatterns = [
     path("book/update/<int:pk>/",views.BookUpdate.as_view(),name='update-book'),
     path("book/delete/<int:pk>/",views.BookDestroy.as_view(),name='delete-book'),
 
-    path('account/',include('account.urls'))
+    path('account/',include('account.urls')),
+
+    path("person/",views.PersonList.as_view(),name='list-person'),
+    path("person/<int:pk>/",views.PersonView.as_view(),name='view-person'),
+    path("person/add/",views.PersonCreate.as_view(),name='add-person'),
+    path("person/update/<int:pk>/",views.PersonUpdate.as_view(),name='update-person'),
+    path("person/delete/<int:pk>/",views.PersonDestroy.as_view(),name='delete-person'),
+
+    path("person/<int:person_id>/borrowed/",views.PersonBorrowedList.as_view(),name='borrowed-person'),
+    path("person/<int:person_id>/returned/",views.PersonReturnedList.as_view(),name='returned-person'),
+
+    path("lending/",views.LendingHistoryList.as_view(),name='list-lending'),
+    path("lending/<int:pk>/",views.LendingHistoryView.as_view(),name='view-lending'),
+    path("lending/add/",views.LendingHistoryCreate.as_view(),name='add-lending'),
+    path("lending/update/<int:pk>/",views.LendingHistoryUpdate.as_view(),name='update-lending'),
+    path("lending/delete/<int:pk>/",views.LendingHistoryDestroy.as_view(),name='delete-lending'),
+
+    path("lending/borrowed/",views.BorrowedList.as_view(),name='borrowed-lending'),
+    path("lending/returned/",views.ReturnedList.as_view(),name='returned-lending'),
 
 ]

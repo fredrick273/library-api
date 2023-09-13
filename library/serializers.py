@@ -1,4 +1,4 @@
-from .models import Category,Book
+from .models import Category,Book,Person,LendingHistory
 from rest_framework import serializers
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -18,3 +18,20 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ["id", "title",'author','language','publisher','category','category_name']
+
+class PersonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Person
+        fields = ['id', 'name','age']
+
+
+class LenderHistorySerializer(serializers.ModelSerializer):
+    person = serializers.PrimaryKeyRelatedField(queryset=Person.objects.all())
+    person_name = serializers.StringRelatedField(source='person',read_only=True)
+    book = serializers.PrimaryKeyRelatedField(queryset=Book.objects.all())
+    book_name = serializers.StringRelatedField(source='book',read_only=True)
+
+    class Meta:
+        model = LendingHistory
+        fields = ['id', 'person','person_name','book','book_name','borrowing_time','returning_time' ]
+        

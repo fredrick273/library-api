@@ -189,13 +189,13 @@ Here are some of the key API endpoints for managing library books:
 
 #### 14. Delete a Library Category
 
-- **URL:** `/api/category/delete/<category_id>/<category_id>/`
+- **URL:** `/api/category/delete/<category_id>/`
 - **Method:** GET
 - **Description:** Delete a specific library category.
 
 #### 15. Books of same category
 
-- **URL:** `/api/category/books`
+- **URL:** `/api/category/<category_id>/books/`
 - **Method:** GET
 - **Description:** Retrieve a list of all library books in the specific category.
 
